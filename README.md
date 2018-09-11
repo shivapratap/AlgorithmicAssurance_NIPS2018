@@ -9,12 +9,12 @@ Installation
 ============
 
 ### Dependencies
-* Numpy
-* Scipy
-* Scikit-learn
-* keras  (for lenet-5 model MNIST)
-* Gpyopt (for Bayesian optimisation)
-* tqdm   (to get runtime of loops)
+* Numpy v1.12.1
+* Scipy v1.0.1
+* Scikit-learn v0.19.1 
+* keras v2.0.5  (for lenet-5 model MNIST)
+* Gpyopt v1.2.1	(for Bayesian optimisation)
+* tqdm v4.20.0	(to get runtime of loops)
 
 
 ### Usage:
