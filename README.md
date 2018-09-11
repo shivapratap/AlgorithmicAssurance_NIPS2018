@@ -31,4 +31,4 @@ BO is coded as a minimization problem, hence please set your objective function 
 Dr Shivapratap Gopakumar, shivapratap@gmail.com
 
 ### Reference:
-    Shivapratap Gopakumar, Vu Nguyen,  Sunil Gupta, Santu Rana, and Svetha Venkatesh. "Algorithmic Assurance: An Active Approach to Algorithmic Testing using Bayesian Optimisation" In NIPS 2016.
+    Shivapratap Gopakumar, Sunil Gupta, Santu Rana, Vu Nguyen and Svetha Venkatesh. "Algorithmic Assurance: An Active Approach to Algorithmic Testing using Bayesian Optimisation" In NIPS 2018.
