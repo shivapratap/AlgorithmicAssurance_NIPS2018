@@ -35,6 +35,11 @@ trials = 5      # no of times to repeat the experiment
 budget = 60     # budget for bayesian optimisation
 seed   = 42     # seed for random number generator
 
+# initN - no of initial points to be generated for BO
+# bounds - bounds of input for BO
+# acq_type - List of valid acquisition functions for GPyopt
+
+
 #%% Run EXP3 Algorithm
 
 myexp3 = GP_EXP3(objfn=f, initN=3, bounds=bounds, acq_type='LCB', C=categories, rand_seed=seed)
