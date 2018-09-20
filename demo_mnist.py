@@ -36,7 +36,7 @@ bounds = [
 trials = 5      # no: of times to repeat our experiment
 budget = 500    # budget for bayesian optimisation
 categories = 9  # no of digits - 9 digits in total
-seed = 108      # seed for random number generator
+seed = 42       # seed for random number generator
 
 #%%
 
@@ -69,9 +69,10 @@ rand_time = time.time() - start_time
     
 #%%
 start_time = time.time()
-oracle = Oracle_BO(objfn=f, initN=15, bounds=bounds, acq_type='LCB', C=categories)
-oracle.runOracle_Trials(100, 5)
+oracle = Oracle_BO(objfn=f, initN=1, bounds=bounds, acq_type='LCB', C=categories)
+oracle.runOracle_Trials(500, 3)
 oracle_time = time.time() - start_time
+print("Oracle finished in : ", oracle_time/3600, "hrs")
 
 #%% Plot the comparison
     
@@ -106,4 +107,4 @@ plt.errorbar(indx, oracle.mean_bestVals_batch[indx]*100,
 plt.legend()
 
 #%% Plot the histogram of selected digits for EXP3
-myexp3.plotResults()
+#myexp3.plotResults()

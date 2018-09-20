@@ -50,14 +50,20 @@ class Oracle_BO():
     def runOracle_Trials(self, budget, trials):
         self.result_perTrial_list = []
         self.opt_ht_trial = []
-        self.best_vals = np.zeros((budget+5, trials))
+#        self.best_vals = np.zeros((budget+5, trials))
+        self.best_vals = []
+#        print("Size of best vals: ", self.best_vals.shape)
         for t in range(trials):
-            df, self.best_vals[:, t] = self.runOracle(budget)
-            self.result_perTrial_list.append(df)
+#            df, self.best_vals[:, t] = self.runOracle(budget)
+            #self.df holds the result for each category
+            #best_vals is a list of best values during each trial
+            self.df, bestvals = self.runOracle(budget)
+            self.best_vals.append(bestvals)
+            self.result_perTrial_list.append(self.df)
             self.opt_ht_trial.append(self.opt_ht)
-        self.mean_best_vals = np.mean(self.best_vals, axis=1)
-        self.err_best_vals  = np.std(self.best_vals, axis=1)/np.sqrt(trials)
-        
+        self.mean_best_vals = np.mean(self.best_vals, axis=0)
+        self.err_best_vals  = np.std(self.best_vals, axis=0)/np.sqrt(trials)
+#        
             
     def runOracle(self, budget):
         self.data, self.result = self.initialise()
@@ -73,13 +79,24 @@ class Oracle_BO():
         
         self.opt_vals = [self.result_list[ii][-1] for ii in range(self.C)]
         self.opt_ht = np.argmin(self.opt_vals)
-#        vals = np.column_stack(([self.result_list[i]*-1 for i in range(self.C)] ))
-        vals = np.zeros((len(self.result_list[0]), self.C ))
-        for i in range(self.C):
-            vals[:,i] = self.result_list[i]
         
+        maxlen = 0
+        for i in range(self.C):
+            if len(self.result_list[i]) > maxlen:
+                maxlen = len(self.result_list[i])
+        
+        
+        vals = np.zeros((maxlen, self.C ))
+        for i in range(self.C):
+            l = len(self.result_list[i])
+            vals[:,i][:l] = self.result_list[i][:l]     
+            
+#        for i in range(self.C):
+#            vals[:,i] = self.result_list[i]
+     
         bv = self.result_list[self.opt_ht] * -1 
         df = pd.DataFrame(data = vals, columns=np.arange(self.C))
+#        print("Size of best vals in loop: ", bv.shape)
         return df, bv
     
     

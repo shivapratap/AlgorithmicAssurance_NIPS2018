@@ -66,7 +66,6 @@ random.runoptimBatchList(trials, budget)
 oracle = Oracle_BO(objfn=f, initN=3, bounds=bounds, acq_type='LCB', C=categories, rand_seed=seed)
 oracle.runOracle_Trials(budget=50, trials=3)
 
-
 #%% Plot the comparison
 
 plt.style.use('seaborn-white')
@@ -104,4 +103,4 @@ plt.xlabel("Iteration", fontsize=20)
 plt.ylabel("Best Value so far", fontsize=20)
 plt.title("Synthetic Function - D=2 C=3", fontsize=25 )
 plt.legend(prop={'size': 18})
-#plt.savefig("SynthFns_C3_D2.pdf", bbox_inches='tight')
+plt.savefig("SynthFns_C3_D2.pdf", bbox_inches='tight')
