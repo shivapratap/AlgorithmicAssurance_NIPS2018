@@ -7,6 +7,13 @@ Created on Wed Aug  1 16:31:49 2018
 """
 
 
+# =============================================================================
+#  EXP3 Algorithm as Multi-arm bandit problem with BO for Synthetic functions (2D)
+#        Arm 0: Rosenbrock, Arm 1: Sixhump Camel Arm 2: Beale 
+#  EXP3 should select Arm 1: sixhump camel as the best function 
+#  The best value should converge to 1.03 
+# =============================================================================
+
 import numpy as np
 import matplotlib.pyplot as plt
 

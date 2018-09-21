@@ -8,7 +8,7 @@ Created on Tue Jul 31 19:27:06 2018
 
 # =============================================================================
 #  EXP3 Algorithm for MNIST digits
-#  Each algorithm takes around 7 hours on a server with 
+#  Each algorithm takes around 3 hours on a server with 40 CPUs and 756G RAM
 # =============================================================================
 
 import numpy as np
@@ -70,7 +70,7 @@ rand_time = time.time() - start_time
 #%%
 start_time = time.time()
 oracle = Oracle_BO(objfn=f, initN=1, bounds=bounds, acq_type='LCB', C=categories)
-oracle.runOracle_Trials(500, 3)
+oracle.runOracle_Trials(budget=500, trials=3)
 oracle_time = time.time() - start_time
 print("Oracle finished in : ", oracle_time/3600, "hrs")
 
